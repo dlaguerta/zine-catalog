@@ -17,13 +17,23 @@ MongoClient.connect(url, (err, database) => {
    });
 });
 
+//use embedded javascript for view engine
+
+app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 
 //CRUD handlers below
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
+  // res.sendFile(__dirname + '/index.html');
   // Note: __dirname is directory that contains the JavaScript source code.
+
+  var cursor = db.collection('zines').find().toArray(function(err, results){
+    // console.log(results);
+    if (err) return console.log(err);
+    //render index.ejs;
+    res.render('index.ejs', {zines: results});
+  });
 });
 
 app.post('/zines', (req, res) => {
