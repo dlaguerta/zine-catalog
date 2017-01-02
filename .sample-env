@@ -1,0 +1,2 @@
+MONGO_DBUSER=fake_user
+MONGO_DBPASSWORD=fake_pw

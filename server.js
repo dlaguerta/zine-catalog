@@ -2,15 +2,19 @@
 const express = require('express');
 const bodyParser = require('body-parser'); // express middleware for reading post requests from forms, Use with "use" method
 const app = express();
-const MongoClient = require('mongodb').MongoClient
+const MongoClient = require('mongodb').MongoClient;
+var dotenv = require('dotenv');
+dotenv.load();
 
-MongoClient.connect('mongodb://<dbuser>:<dbpassword>@ds151028.mlab.com:51028/zines', (err, database) => {
-  // ... start the server
+var db;
+
+MongoClient.connect('mongodb://<MONGO_DBUSER>:<MONGO_DBPASSWORD>@ds151028.mlab.com:51028/zines', (err, database) => {
+  if (err) return console.log(err);
+   db = database;
+   app.listen(3000, () => {
+     console.log('listening on 3000');
 });
 
-app.listen(3000, function() {
-  console.log('listening on 3000');
-});
 
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -21,7 +25,14 @@ app.get('/', (req, res) => {
   // Note: __dirname is directory that contains the JavaScript source code.
 });
 
-app.post('/zines', (req, res)=> {
+app.post('/zines', (req, res) => {
   console.log(req.body);
+  db.collection('zines').save(req.body, (error, result) => {
+    if (err) return console.log(err);
+    console.log('saved to zine database');
+    res.redirect('/');
+  });
 });
+
+
 
