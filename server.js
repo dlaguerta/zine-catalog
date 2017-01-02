@@ -4,17 +4,18 @@ const bodyParser = require('body-parser'); // express middleware for reading pos
 const app = express();
 const MongoClient = require('mongodb').MongoClient;
 var dotenv = require('dotenv');
-dotenv.load();
+dotenv.config();
 
+var url = process.env.MONGO_URL;
 var db;
 
-MongoClient.connect('mongodb://<MONGO_DBUSER>:<MONGO_DBPASSWORD>@ds151028.mlab.com:51028/zines', (err, database) => {
+MongoClient.connect(url, (err, database) => {
   if (err) return console.log(err);
    db = database;
    app.listen(3000, () => {
      console.log('listening on 3000');
+   });
 });
-
 
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -26,8 +27,8 @@ app.get('/', (req, res) => {
 });
 
 app.post('/zines', (req, res) => {
-  console.log(req.body);
-  db.collection('zines').save(req.body, (error, result) => {
+  // console.log(req.body);
+  db.collection('zines').save(req.body, (err, result) => {
     if (err) return console.log(err);
     console.log('saved to zine database');
     res.redirect('/');
