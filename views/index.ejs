@@ -10,11 +10,11 @@
     <ul class="zines">
       <% for(var i=0; i<zines.length; i++) {%>
         <li class="zine">
-          <span><%= zines[i].title %></span>
-          <span><%= zines[i].creator %></span>
+          <span><%= zines[i].title || zines[i].Title %></span>
+          <span><%= zines[i].creator || zines[i].Creator %></span>
         </li>
       <% } %>
-      
+
 <h1>Add Your Favorite Zine</h1>
 <form action="/zines" method="POST">
   <input type="text" placeholder="title" name="title">
