@@ -3,9 +3,12 @@ const express = require('express');
 const bodyParser = require('body-parser'); // express middleware for reading post requests from forms, Use with "use" method
 const app = express();
 const MongoClient = require('mongodb').MongoClient;
+
+//require our env and use our env file
 var dotenv = require('dotenv');
 dotenv.config();
 
+//url with env secrets
 var url = process.env.MONGO_URL;
 var db;
 
@@ -18,9 +21,10 @@ MongoClient.connect(url, (err, database) => {
 });
 
 //use embedded javascript for view engine
-
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
+
+
 
 //CRUD handlers below
 
