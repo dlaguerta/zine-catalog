@@ -10,7 +10,10 @@
     <ul class="zines">
       <% for(var i=0; i<zines.length; i++) {%>
         <li class="zine">
-          <p><b>Title:</b> <%= zines[i].title || zines[i].Title %> <span><b>Subtitle: </b> <%=  typeof  zines[i]["Sub title"] !='undefined' ? zines[i]["Sub title"] : '' %></span></p>
+          <p><b>Title:</b> <%= zines[i].title || zines[i].Title %> </p>
+            <% if (zines[i]["Sub title"] !='undefined'){ %>
+            <i>  <%= zines[i]["Sub title"] %></i>
+            <% } %>
           <p><b>Creator: </b> <%= zines[i].creator || zines[i].Creator %></p>
 
         </li>
