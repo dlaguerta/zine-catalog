@@ -2,6 +2,7 @@
 const express = require('express');
 const bodyParser = require('body-parser'); // express middleware for reading post requests from forms, Use with "use" method
 const app = express();
+//connect to our Mongo db, hosted on mlab
 const MongoClient = require('mongodb').MongoClient;
 
 //require our env and use our env file
