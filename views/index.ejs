@@ -18,8 +18,11 @@
           <p>Volume: <%= zines[i]["Volume"] %></p>
           <p>Number: <%= zines[i]["Number"] %></p>
           <p>Date: <%= zines[i]["Date"] %></p>
+          <p>Content tags: <%= zines[i]["Tags"] %></p>
+          <p>Press House/Publisher: <%= zines[i]["Press House/Publisher"] %></p>
+
           <div>
-            <button id="update"> Update </button>
+            <button id="delete"> Delete Zine from Database </button>
           </div>
 
         </li>
@@ -33,6 +36,7 @@
   <input type="text" placeholder="creator" name="creator">
   <button type="submit">Submit</button>
 </form>
+<script src="main.js"></script>
   </body>
 </html>
 

@@ -27,6 +27,8 @@ app.set('view engine', 'ejs');
 //use bodyParser
 app.use(bodyParser.urlencoded({extended: true}));
 
+//use our public folder
+app.use(express.static('public'));
 
 
 //CRUD handlers below
@@ -36,9 +38,11 @@ app.get('/', (req, res) => {
   // Note: __dirname is directory that contains the JavaScript source code.
 
   var cursor = db.collection('zines').find().toArray(function(err, results){
-    // console.log(results);
+    console.log(results);
     if (err) return console.log(err);
     //render index.ejs;
+    //send the contents in json to curl
+    // res.send(results);
     res.render('index.ejs', {zines: results});
   });
 });
