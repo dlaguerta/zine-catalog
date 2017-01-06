@@ -13,16 +13,18 @@ dotenv.config();
 var url = process.env.MONGO_URL;
 var db;
 
+//connect Mongodb with server at startup
 MongoClient.connect(url, (err, database) => {
   if (err) return console.log(err);
    db = database;
    app.listen(3000, () => {
-     console.log('listening on 3000');
+     console.log('listening on port 3000');
    });
 });
 
-//use embedded javascript for view engine
+//use embedded javascript for view engine. use res.render(the view file, then locals(the data passed to the view))
 app.set('view engine', 'ejs');
+//use bodyParser
 app.use(bodyParser.urlencoded({extended: true}));
 
 
@@ -50,5 +52,8 @@ app.post('/zines', (req, res) => {
   });
 });
 
+//update requests
 
+
+//delete request
 
