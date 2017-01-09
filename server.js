@@ -31,7 +31,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 
 
-//CRUD handlers below
+//CRUD handlers below: @TODO: move to routes folder
 
 app.get('/', (req, res) => {
   // res.sendFile(__dirname + '/index.html');
