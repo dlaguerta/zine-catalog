@@ -3,16 +3,16 @@ var app = require('./../app');
 
 app.get('/', (req, res) => {
   // res.sendFile(__dirname + '/index.html');
-  // Note: __dirname is directory that contains the JavaScript source code.
+  res.send('OK');
 
-  var cursor = db.collection('zines').find().toArray(function(err, results){
-    console.log(results);
-    if (err) return console.log(err);
-    //render index.ejs;
-    //send the contents in json to curl
-    // res.send(results);
-    res.render('index.ejs', {zines: results});
-  });
+  // var cursor = db.collection('zines').find().toArray(function(err, results){
+  //   console.log(results);
+  //   if (err) return console.log(err);
+  //   //render index.ejs;
+  //   //send the contents in json to curl
+  //   // res.send(results);
+  //   res.render('index.ejs', {zines: results});
+  // });
 });
 //
 //
