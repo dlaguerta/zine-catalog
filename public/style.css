@@ -1,0 +1,5 @@
+html {
+  background: #f9b8b4; /* Old browsers */
+  background: url('bg-stars.png') repeat-x center top, linear-gradient(to bottom, #f9b8b4 0%, #ebe8ba 100%) no-repeat center; /* W3C */
+  min-height: 100%;
+}
