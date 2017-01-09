@@ -1,6 +1,6 @@
 //app module
 const express = require('express');
-const app = express();
+const app = module.exports = express();
 const bodyParser = require('body-parser'); // express middleware for reading post requests from forms, Use with "use" method
 var index = require('./controllers/index');
 
@@ -16,4 +16,4 @@ app.use(express.static(__dirname +'public'));
 // });
 // app.use('/', index);
 
-module.exports = app;
+// module.exports = app;
