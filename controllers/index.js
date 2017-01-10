@@ -1,18 +1,22 @@
 var express = require('express');
 var app = require('./../app');
+var db = require('./../db');
 
 app.get('/', (req, res) => {
   // res.sendFile(__dirname + '/index.html');
-  res.send('OK');
+  // res.send('OK');
 
-  // var cursor = db.collection('zines').find().toArray(function(err, results){
-  //   console.log(results);
-  //   if (err) return console.log(err);
-  //   //render index.ejs;
-  //   //send the contents in json to curl
-  //   // res.send(results);
-  //   res.render('index.ejs', {zines: results});
-  // });
+
+///erroring here: db.collection is not defined, but was before
+  var cursor = db.collection('zines').find().toArray(function(err, results){
+    console.log(results);
+    if (err) return console.log(err);
+    //render index.ejs;
+    //send the contents in json to curl
+    // res.send(results);
+    res.render('index.ejs', {zines: results});
+  });
+
 });
 //
 //
@@ -29,12 +33,3 @@ app.get('/', (req, res) => {
 
 
 
-// var router = express.Router();
-
-// /* GET home page. */
-// router.get('/', function(req, res, next) {
-//   console.log(res);
-//   res.render('index');
-// });
-//
-// module.exports = router;
